@@ -168,8 +168,17 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>cAPI Client</h1>
-        <p>Test and interact with REST APIs</p>
+        <div className="app-header-content">
+          <img 
+            src="/capi-header-logo.png" 
+            alt="cAPI Logo" 
+            className="app-header-logo"
+          />
+          <div className="app-header-text">
+            <h1>cAPI Client</h1>
+            <p>Test and interact with REST APIs</p>
+          </div>
+        </div>
       </header>
 
       <div className="app-examples-container">
@@ -222,6 +231,14 @@ const App: React.FC = () => {
           <ResponseView response={response} loading={loading} onClear={handleClearResponse} />
         </div>
       </div>
+
+      <footer className="app-footer">
+        <img 
+          src="/capi-footer-logo.png" 
+          alt="cAPI Footer Logo" 
+          className="app-footer-logo"
+        />
+      </footer>
     </div>
   );
 };
