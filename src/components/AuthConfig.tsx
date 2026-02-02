@@ -26,6 +26,12 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
   const [apiKeyValue, setApiKeyValue] = useState(auth?.apiKeyValue || '');
   const [customHeader, setCustomHeader] = useState(auth?.customHeader || '');
   const [customValue, setCustomValue] = useState(auth?.customValue || '');
+  
+  // Visibility toggles for password fields
+  const [showToken, setShowToken] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showApiKeyValue, setShowApiKeyValue] = useState(false);
+  const [showCustomValue, setShowCustomValue] = useState(false);
 
   useEffect(() => {
     if (auth) {
@@ -138,13 +144,23 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
       {authType === AUTH_TYPES.BEARER && (
         <div className="auth-input-group">
           <label className="auth-input-label">Token</label>
-          <input
-            type="text"
-            className="auth-input"
-            placeholder="Enter bearer token"
-            value={token}
-            onChange={(e) => handleTokenChange(e.target.value)}
-          />
+          <div className="auth-input-wrapper">
+            <input
+              type={showToken ? 'text' : 'password'}
+              className="auth-input"
+              placeholder="Enter bearer token"
+              value={token}
+              onChange={(e) => handleTokenChange(e.target.value)}
+            />
+            <button
+              type="button"
+              className="auth-toggle-btn"
+              onClick={() => setShowToken(!showToken)}
+              aria-label={showToken ? 'Hide token' : 'Show token'}
+            >
+              {showToken ? '👁️' : '👁️‍🗨️'}
+            </button>
+          </div>
         </div>
       )}
 
@@ -162,13 +178,23 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
           </div>
           <div className="auth-input-group">
             <label className="auth-input-label">Password</label>
-            <input
-              type="password"
-              className="auth-input"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => handlePasswordChange(e.target.value)}
-            />
+            <div className="auth-input-wrapper">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className="auth-input"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => handlePasswordChange(e.target.value)}
+              />
+              <button
+                type="button"
+                className="auth-toggle-btn"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
           </div>
         </>
       )}
@@ -187,13 +213,23 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
           </div>
           <div className="auth-input-group">
             <label className="auth-input-label">Key Value</label>
-            <input
-              type="text"
-              className="auth-input"
-              placeholder="Enter API key value"
-              value={apiKeyValue}
-              onChange={(e) => handleApiKeyValueChange(e.target.value)}
-            />
+            <div className="auth-input-wrapper">
+              <input
+                type={showApiKeyValue ? 'text' : 'password'}
+                className="auth-input"
+                placeholder="Enter API key value"
+                value={apiKeyValue}
+                onChange={(e) => handleApiKeyValueChange(e.target.value)}
+              />
+              <button
+                type="button"
+                className="auth-toggle-btn"
+                onClick={() => setShowApiKeyValue(!showApiKeyValue)}
+                aria-label={showApiKeyValue ? 'Hide API key value' : 'Show API key value'}
+              >
+                {showApiKeyValue ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
           </div>
         </>
       )}
@@ -212,13 +248,23 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
           </div>
           <div className="auth-input-group">
             <label className="auth-input-label">Header Value</label>
-            <input
-              type="text"
-              className="auth-input"
-              placeholder="Enter header value"
-              value={customValue}
-              onChange={(e) => handleCustomValueChange(e.target.value)}
-            />
+            <div className="auth-input-wrapper">
+              <input
+                type={showCustomValue ? 'text' : 'password'}
+                className="auth-input"
+                placeholder="Enter header value"
+                value={customValue}
+                onChange={(e) => handleCustomValueChange(e.target.value)}
+              />
+              <button
+                type="button"
+                className="auth-toggle-btn"
+                onClick={() => setShowCustomValue(!showCustomValue)}
+                aria-label={showCustomValue ? 'Hide header value' : 'Show header value'}
+              >
+                {showCustomValue ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
           </div>
         </>
       )}
