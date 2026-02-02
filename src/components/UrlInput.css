@@ -1,0 +1,35 @@
+.url-input-container {
+  margin-bottom: 20px;
+}
+
+.url-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.url-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.url-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  font-family: 'Courier New', monospace;
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.url-input::placeholder {
+  color: #999;
+}
