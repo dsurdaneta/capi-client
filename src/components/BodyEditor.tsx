@@ -50,28 +50,49 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
   };
 
   useEffect(() => {
-    if (bodyType === BODY_TYPES.JSON && typeof body === 'object' && body !== null) {
-      setJsonBody(JSON.stringify(body, null, 2));
-    } else if (bodyType === BODY_TYPES.JSON) {
-      setJsonBody('');
+    // Only update jsonBody when bodyType changes, not when body changes (to avoid reformatting while typing)
+    if (bodyType === BODY_TYPES.JSON) {
+      if (typeof body === 'object' && body !== null) {
+        setJsonBody(JSON.stringify(body, null, 2));
+      } else if (typeof body === 'string') {
+        setJsonBody(body);
+      } else {
+        setJsonBody('');
+      }
     }
-  }, [body, bodyType]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bodyType]);
 
   const handleBodyTypeChange = (newType: BodyType): void => {
     onBodyTypeChange(newType);
     if (newType === BODY_TYPES.NONE) {
       onChange(null);
+      setJsonBody('');
+    } else if (newType === BODY_TYPES.JSON && bodyType !== BODY_TYPES.JSON) {
+      // When switching TO JSON type, initialize jsonBody from body
+      if (typeof body === 'object' && body !== null) {
+        setJsonBody(JSON.stringify(body, null, 2));
+      } else if (typeof body === 'string') {
+        setJsonBody(body);
+      } else {
+        setJsonBody('');
+      }
     }
   };
 
   const handleJsonChange = (value: string): void => {
     setJsonBody(value);
-    try {
-      const parsed = JSON.parse(value);
-      onChange(parsed);
-    } catch (e) {
-      // Invalid JSON, but keep the text for editing
-      onChange(value);
+    // Only update parent if JSON is valid, otherwise keep as string for editing
+    if (value.trim() === '') {
+      onChange(null);
+    } else {
+      try {
+        const parsed = JSON.parse(value);
+        onChange(parsed);
+      } catch (e) {
+        // Invalid JSON - keep as string so user can continue editing
+        onChange(value);
+      }
     }
   };
 
