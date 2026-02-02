@@ -8,6 +8,7 @@ interface KeyValueEditorProps {
   onChange: (data: Record<string, string>) => void;
   keyPlaceholder?: string;
   valuePlaceholder?: string;
+  addRowLabel?: string;
 }
 
 const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
@@ -16,6 +17,7 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   onChange,
   keyPlaceholder = 'Key',
   valuePlaceholder = 'Value',
+  addRowLabel,
 }) => {
   const [items, setItems] = useState<KeyValuePair[]>(() => {
     const entries = Object.entries(data || {});
@@ -68,7 +70,7 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
       <div className="key-value-header">
         <label className="key-value-label">{title}</label>
         <button type="button" className="add-row-btn" onClick={handleAddRow}>
-          + Add Row
+          {addRowLabel ? `+ Add ${addRowLabel} Row` : '+ Add Row'}
         </button>
       </div>
       <div className="key-value-table">

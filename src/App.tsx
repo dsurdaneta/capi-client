@@ -128,6 +128,7 @@ const App: React.FC = () => {
               onChange={setParams}
               keyPlaceholder="Parameter"
               valuePlaceholder="Value"
+              addRowLabel="Parameter"
             />
             <KeyValueEditor
               title="Headers"
@@ -135,6 +136,7 @@ const App: React.FC = () => {
               onChange={setHeaders}
               keyPlaceholder="Header"
               valuePlaceholder="Value"
+              addRowLabel="Header"
             />
             <AuthConfig auth={auth} onChange={setAuth} />
             <BodyEditor
