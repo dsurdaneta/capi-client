@@ -58,6 +58,10 @@
   gap: 12px;
   align-items: flex-end;
   margin-bottom: 20px;
+  border: none;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .send-button {

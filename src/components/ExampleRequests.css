@@ -55,11 +55,19 @@
 
 .example-requests-list {
   margin-top: 12px;
-  display: grid;
+  list-style: none;
+  padding: 4px;
+  margin-left: 0;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
   max-height: 400px;
   overflow-y: auto;
-  padding: 4px;
+}
+
+.example-requests-list li {
+  margin: 0;
 }
 
 .example-request-item {

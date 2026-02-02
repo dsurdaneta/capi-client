@@ -109,7 +109,7 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
   };
 
   return (
-    <div className="body-editor-container">
+    <section className="body-editor-container">
       <label className="body-label">Request Body</label>
       <select
         className="body-type-select"

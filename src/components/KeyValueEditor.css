@@ -31,14 +31,14 @@
 }
 
 .key-value-table {
+  width: 100%;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
+  border-collapse: collapse;
 }
 
 .key-value-header-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 40px;
   background-color: #f8f9fa;
   border-bottom: 2px solid #e0e0e0;
 }
@@ -49,6 +49,22 @@
   font-size: 12px;
   color: #666;
   text-transform: uppercase;
+  text-align: left;
+}
+
+.key-value-cell-header:first-child,
+.key-value-row td:first-child {
+  width: 40%;
+}
+
+.key-value-cell-header:nth-child(2),
+.key-value-row td:nth-child(2) {
+  width: calc(60% - 40px);
+}
+
+.key-value-cell-header:last-child,
+.key-value-row td:last-child {
+  width: 40px;
 }
 
 .key-value-cell-header-actions {
@@ -56,8 +72,6 @@
 }
 
 .key-value-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 40px;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -65,20 +79,27 @@
   border-bottom: none;
 }
 
+.key-value-row td {
+  padding: 0;
+  border-right: 1px solid #e0e0e0;
+}
+
+.key-value-row td:last-child {
+  border-right: none;
+}
+
 .key-value-input {
+  width: 100%;
   padding: 10px 12px;
   border: none;
   font-size: 14px;
   font-family: 'Courier New', monospace;
+  box-sizing: border-box;
 }
 
 .key-value-input:focus {
   outline: none;
   background-color: #f8f9fa;
-}
-
-.key-value-input:not(:last-child) {
-  border-right: 1px solid #e0e0e0;
 }
 
 .remove-row-btn {
@@ -104,7 +125,7 @@
 }
 
 .key-value-footer {
-  width: 100%;
+  padding: 0;
 }
 
 .key-value-footer .add-row-btn {

@@ -11,29 +11,29 @@ interface ResponseViewProps {
 const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear }) => {
   if (loading) {
     return (
-      <div className="response-container">
-        <div className="response-header">
+      <article className="response-container">
+        <header className="response-header">
           <h2 className="response-title">Response</h2>
           <button className="clear-button" onClick={onClear} disabled>
             Clear
           </button>
-        </div>
-        <div className="response-loading">Sending request...</div>
-      </div>
+        </header>
+        <p className="response-loading">Sending request...</p>
+      </article>
     );
   }
 
   if (!response) {
     return (
-      <div className="response-container">
-        <div className="response-header">
+      <article className="response-container">
+        <header className="response-header">
           <h2 className="response-title">Response</h2>
           <button className="clear-button" onClick={onClear} disabled>
             Clear
           </button>
-        </div>
-        <div className="response-placeholder">Response will appear here</div>
-      </div>
+        </header>
+        <p className="response-placeholder">Response will appear here</p>
+      </article>
     );
   }
 
@@ -59,8 +59,8 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
   };
 
   return (
-    <div className="response-container">
-      <div className="response-header">
+    <article className="response-container">
+      <header className="response-header">
         <div className="response-header-left">
           <h2 className="response-title">Response</h2>
           <div className="response-status">
@@ -75,27 +75,27 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
         <button className="clear-button" onClick={onClear}>
           Clear
         </button>
-      </div>
+      </header>
 
       {response.error ? (
-        <div className="response-error">
-          <div className="response-error-title">Error</div>
-          <div className="response-error-message">{response.message}</div>
-        </div>
+        <section className="response-error">
+          <h3 className="response-error-title">Error</h3>
+          <p className="response-error-message">{response.message}</p>
+        </section>
       ) : (
         <>
-          <div className="response-section">
-            <div className="response-section-title">Headers</div>
+          <section className="response-section">
+            <h3 className="response-section-title">Headers</h3>
             <pre className="response-content">{formatHeaders(response.headers)}</pre>
-          </div>
+          </section>
 
-          <div className="response-section">
-            <div className="response-section-title">Body</div>
+          <section className="response-section">
+            <h3 className="response-section-title">Body</h3>
             <pre className="response-content">{formatResponseData(response.data)}</pre>
-          </div>
+          </section>
         </>
       )}
-    </div>
+    </article>
   );
 };
 

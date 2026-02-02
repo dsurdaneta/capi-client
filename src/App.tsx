@@ -171,23 +171,23 @@ const App: React.FC = () => {
     <div className="app">
       <Header />
 
-      <div className="app-examples-container">
+      <aside className="app-examples-container">
         <ExampleRequests onSelect={handleExampleSelect} />
-      </div>
+      </aside>
 
-      <div className="app-container">
-        <div className="app-left-panel">
-          <div className="request-panel">
-            <div className="request-header">
+      <main className="app-container">
+        <section className="app-left-panel">
+          <article className="request-panel">
+            <header className="request-header">
               <h2 className="request-title">Request</h2>
               <button className="clear-button" onClick={handleClearRequest} disabled={loading}>
                 Clear
               </button>
-            </div>
-            <div className="method-url-container">
+            </header>
+            <fieldset className="method-url-container">
               <MethodSelector method={method} onChange={setMethod} />
               <UrlInput url={url} onChange={setUrl} />
-            </div>
+            </fieldset>
             <KeyValueEditor
               title="Query Parameters"
               data={params}
@@ -214,13 +214,13 @@ const App: React.FC = () => {
             <button className="send-button" onClick={handleSendRequest} disabled={loading}>
               {loading ? 'Sending...' : 'Send Request'}
             </button>
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div className="app-right-panel">
+        <section className="app-right-panel">
           <ResponseView response={response} loading={loading} onClear={handleClearResponse} />
-        </div>
-      </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

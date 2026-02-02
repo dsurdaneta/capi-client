@@ -74,50 +74,64 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   );
 
   return (
-    <div className="key-value-editor-container">
-      <div className="key-value-header">
+    <section className="key-value-editor-container">
+      <header className="key-value-header">
         <label className="key-value-label">{title}</label>
         {addRowButtonPosition === 'header' && addRowButton}
-      </div>
-      <div className="key-value-table">
-        <div className="key-value-header-row">
-          <div className="key-value-cell-header">{keyPlaceholder}</div>
-          <div className="key-value-cell-header">{valuePlaceholder}</div>
-          <div className="key-value-cell-header-actions"></div>
-        </div>
-        {items.map((item, index) => (
-          <div key={index} className="key-value-row">
-            <input
-              type="text"
-              className="key-value-input"
-              placeholder={keyPlaceholder}
-              value={item.key}
-              onChange={(e) => handleItemChange(index, 'key', e.target.value)}
-            />
-            <input
-              type="text"
-              className="key-value-input"
-              placeholder={valuePlaceholder}
-              value={item.value}
-              onChange={(e) => handleItemChange(index, 'value', e.target.value)}
-            />
-            <button
-              type="button"
-              className="remove-row-btn"
-              onClick={() => handleRemoveRow(index)}
-              disabled={items.length === 1}
-            >
-              ×
-            </button>
-          </div>
-        ))}
+      </header>
+      <table className="key-value-table">
+        <thead>
+          <tr className="key-value-header-row">
+            <th className="key-value-cell-header">{keyPlaceholder}</th>
+            <th className="key-value-cell-header">{valuePlaceholder}</th>
+            <th className="key-value-cell-header-actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index} className="key-value-row">
+              <td>
+                <input
+                  type="text"
+                  className="key-value-input"
+                  placeholder={keyPlaceholder}
+                  value={item.key}
+                  onChange={(e) => handleItemChange(index, 'key', e.target.value)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  className="key-value-input"
+                  placeholder={valuePlaceholder}
+                  value={item.value}
+                  onChange={(e) => handleItemChange(index, 'value', e.target.value)}
+                />
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="remove-row-btn"
+                  onClick={() => handleRemoveRow(index)}
+                  disabled={items.length === 1}
+                >
+                  ×
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
         {addRowButtonPosition === 'footer' && (
-          <div className="key-value-footer">
-            {addRowButton}
-          </div>
+          <tfoot>
+            <tr>
+              <td colSpan={3} className="key-value-footer">
+                {addRowButton}
+              </td>
+            </tr>
+          </tfoot>
         )}
-      </div>
-    </div>
+      </table>
+    </section>
   );
 };
 

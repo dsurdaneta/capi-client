@@ -79,8 +79,8 @@ const ExampleRequests: React.FC<ExampleRequestsProps> = ({ onSelect }) => {
   };
 
   return (
-    <div className="example-requests-container">
-      <div className="example-requests-header">
+    <nav className="example-requests-container">
+      <header className="example-requests-header">
         <h2 className="example-requests-title">Select to load a pre-defined example request</h2>
         <p className="example-requests-subtitle">
           From a small list of public APIs, you can find more here{' '}
@@ -93,7 +93,7 @@ const ExampleRequests: React.FC<ExampleRequestsProps> = ({ onSelect }) => {
             https://github.com/public-apis/public-apis
           </a>
         </p>
-      </div>
+      </header>
       <button
         type="button"
         className="example-requests-toggle"
@@ -102,24 +102,25 @@ const ExampleRequests: React.FC<ExampleRequestsProps> = ({ onSelect }) => {
         {isOpen ? '▼' : '▶'} Example Requests
       </button>
       {isOpen && (
-        <div className="example-requests-list">
+        <ul className="example-requests-list">
           {EXAMPLE_REQUESTS.map((example, index) => (
-            <button
-              key={index}
-              type="button"
-              className="example-request-item"
-              onClick={() => handleSelect(example)}
-            >
-              <div className="example-request-name">{example.name}</div>
-              <div className="example-request-url">{example.url}</div>
-              {example.description && (
-                <div className="example-request-description">{example.description}</div>
-              )}
-            </button>
+            <li key={index}>
+              <button
+                type="button"
+                className="example-request-item"
+                onClick={() => handleSelect(example)}
+              >
+                <h3 className="example-request-name">{example.name}</h3>
+                <p className="example-request-url">{example.url}</p>
+                {example.description && (
+                  <p className="example-request-description">{example.description}</p>
+                )}
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
-    </div>
+    </nav>
   );
 };
 

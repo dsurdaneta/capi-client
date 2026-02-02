@@ -127,7 +127,7 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
   };
 
   return (
-    <div className="auth-config-container">
+    <section className="auth-config-container">
       <label className="auth-label">Authentication</label>
       <select
         className="auth-type-select"
@@ -142,7 +142,7 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
       </select>
 
       {authType === AUTH_TYPES.BEARER && (
-        <div className="auth-input-group">
+        <fieldset className="auth-input-group">
           <label className="auth-input-label">Token</label>
           <div className="auth-input-wrapper">
             <input
@@ -196,11 +196,11 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
               </button>
             </div>
           </div>
-        </>
+        </fieldset>
       )}
 
       {authType === AUTH_TYPES.API_KEY && (
-        <>
+        <fieldset>
           <div className="auth-input-group">
             <label className="auth-input-label">Key Name</label>
             <input
@@ -266,9 +266,9 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
               </button>
             </div>
           </div>
-        </>
+        </fieldset>
       )}
-    </div>
+    </section>
   );
 };
 

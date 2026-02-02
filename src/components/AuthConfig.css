@@ -2,6 +2,12 @@
   margin-bottom: 20px;
 }
 
+.auth-config-container fieldset {
+  border: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+
 .auth-label {
   display: block;
   margin-bottom: 8px;
