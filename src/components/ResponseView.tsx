@@ -1,6 +1,7 @@
 import React from 'react';
 import './ResponseView.css';
 import { ApiResponse } from '../types';
+import { highlightJson } from '../helpers/jsonHighlight';
 
 interface ResponseViewProps {
   response: ApiResponse | null;
@@ -50,6 +51,7 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
     return String(data);
   };
 
+
   const getStatusClass = (status: number): string => {
     if (status >= 200 && status < 300) return 'status-success';
     if (status >= 300 && status < 400) return 'status-redirect';
@@ -91,7 +93,14 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
 
           <section className="response-section">
             <h3 className="response-section-title">Body</h3>
-            <pre className="response-content">{formatResponseData(response.data)}</pre>
+            {(() => {
+              const formatted = formatResponseData(response.data);
+              // Check if it looks like JSON
+              if (typeof response.data === 'object' && response.data !== null) {
+                return highlightJson(formatted);
+              }
+              return <pre className="response-content">{formatted}</pre>;
+            })()}
           </section>
         </>
       )}

@@ -157,3 +157,35 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.json-highlighted {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.json-key {
+  color: #881391;
+  font-weight: 600;
+}
+
+.json-string {
+  color: #0b7500;
+}
+
+.json-number {
+  color: #1c00cf;
+}
+
+.json-boolean {
+  color: #cf0000;
+  font-weight: 600;
+}
+
+.json-bracket {
+  color: #333;
+  font-weight: 600;
+}
+
+.json-punctuation {
+  color: #666;
+}
