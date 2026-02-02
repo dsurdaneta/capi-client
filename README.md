@@ -23,6 +23,26 @@ A modern React + TypeScript-based API Client User Interface for testing and inte
   - Form Data
   - x-www-form-urlencoded
 - **Response View**: View response status, headers, and body
+- **Example Requests**: Pre-configured example requests from public APIs to help you get started quickly
+
+## Example Requests
+
+cAPI Client includes a collection of pre-defined example requests from various public APIs. These examples help you quickly test the application and explore different API endpoints without manually entering URLs and parameters.
+
+The examples include:
+- **Open Library API**: Search for books by authors
+- **Meow Facts API**: Get random cat facts
+- **Pokemon API**: Access Pokemon data, items, berries, and Pokedex information
+- **Random User API**: Generate random user data
+- **Star Wars API**: Access Star Wars universe data
+
+You can find more public APIs to test with at the [public-apis GitHub repository](https://github.com/public-apis/public-apis), which is a comprehensive list of free APIs for software and web development.
+
+To use an example request:
+1. Click on the "Example Requests" section at the top of the application
+2. Select any example from the list
+3. The URL, method, and query parameters will be automatically populated
+4. Click "Send Request" to execute the API call
 
 ## Requirements
 
