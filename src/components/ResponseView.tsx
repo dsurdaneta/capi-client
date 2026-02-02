@@ -5,12 +5,19 @@ import { ApiResponse } from '../types';
 interface ResponseViewProps {
   response: ApiResponse | null;
   loading: boolean;
+  onClear: () => void;
 }
 
-const ResponseView: React.FC<ResponseViewProps> = ({ response, loading }) => {
+const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear }) => {
   if (loading) {
     return (
       <div className="response-container">
+        <div className="response-header">
+          <h2 className="response-title">Response</h2>
+          <button className="clear-button" onClick={onClear} disabled>
+            Clear
+          </button>
+        </div>
         <div className="response-loading">Sending request...</div>
       </div>
     );
@@ -19,6 +26,12 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading }) => {
   if (!response) {
     return (
       <div className="response-container">
+        <div className="response-header">
+          <h2 className="response-title">Response</h2>
+          <button className="clear-button" onClick={onClear} disabled>
+            Clear
+          </button>
+        </div>
         <div className="response-placeholder">Response will appear here</div>
       </div>
     );
@@ -48,14 +61,20 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading }) => {
   return (
     <div className="response-container">
       <div className="response-header">
-        <div className="response-status">
-          <span className={`status-badge ${getStatusClass(response.status)}`}>
-            {response.status} {response.statusText || ''}
-          </span>
-          {response.duration && (
-            <span className="response-duration">{response.duration}ms</span>
-          )}
+        <div className="response-header-left">
+          <h2 className="response-title">Response</h2>
+          <div className="response-status">
+            <span className={`status-badge ${getStatusClass(response.status)}`}>
+              {response.status} {response.statusText || ''}
+            </span>
+            {response.duration && (
+              <span className="response-duration">{response.duration}ms</span>
+            )}
+          </div>
         </div>
+        <button className="clear-button" onClick={onClear}>
+          Clear
+        </button>
       </div>
 
       {response.error ? (

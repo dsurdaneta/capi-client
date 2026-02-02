@@ -107,6 +107,20 @@ const App: React.FC = () => {
     }
   };
 
+  const handleClearRequest = (): void => {
+    setUrl('');
+    setMethod('GET');
+    setParams({});
+    setHeaders({});
+    setAuth(null);
+    setBody(null);
+    setBodyType(BODY_TYPES.NONE);
+  };
+
+  const handleClearResponse = (): void => {
+    setResponse(null);
+  };
+
   const handleSendRequest = async (): Promise<void> => {
     if (!url.trim()) {
       alert('Please enter a URL');
@@ -165,6 +179,12 @@ const App: React.FC = () => {
       <div className="app-container">
         <div className="app-left-panel">
           <div className="request-panel">
+            <div className="request-header">
+              <h2 className="request-title">Request</h2>
+              <button className="clear-button" onClick={handleClearRequest} disabled={loading}>
+                Clear
+              </button>
+            </div>
             <div className="method-url-container">
               <MethodSelector method={method} onChange={setMethod} />
               <UrlInput url={url} onChange={setUrl} />
@@ -199,7 +219,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="app-right-panel">
-          <ResponseView response={response} loading={loading} />
+          <ResponseView response={response} loading={loading} onClear={handleClearResponse} />
         </div>
       </div>
     </div>
