@@ -165,8 +165,10 @@ const App: React.FC = () => {
       <div className="app-container">
         <div className="app-left-panel">
           <div className="request-panel">
-            <UrlInput url={url} onChange={setUrl} />
-            <MethodSelector method={method} onChange={setMethod} />
+            <div className="method-url-container">
+              <MethodSelector method={method} onChange={setMethod} />
+              <UrlInput url={url} onChange={setUrl} />
+            </div>
             <KeyValueEditor
               title="Query Parameters"
               data={params}

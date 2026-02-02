@@ -1,5 +1,8 @@
 .method-selector-container {
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  min-width: 120px;
+  width: 120px;
+  flex-shrink: 0;
 }
 
 .method-label {

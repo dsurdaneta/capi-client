@@ -56,6 +56,13 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.method-url-container {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
 .send-button {
   width: 100%;
   padding: 14px 24px;
