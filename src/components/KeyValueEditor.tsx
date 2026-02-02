@@ -9,6 +9,7 @@ interface KeyValueEditorProps {
   keyPlaceholder?: string;
   valuePlaceholder?: string;
   addRowLabel?: string;
+  addRowButtonPosition?: 'header' | 'footer';
 }
 
 const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
@@ -18,6 +19,7 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
   keyPlaceholder = 'Key',
   valuePlaceholder = 'Value',
   addRowLabel,
+  addRowButtonPosition = 'header',
 }) => {
   const [items, setItems] = useState<KeyValuePair[]>(() => {
     const entries = Object.entries(data || {});
@@ -65,13 +67,17 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
     onChange(obj);
   };
 
+  const addRowButton = (
+    <button type="button" className="add-row-btn" onClick={handleAddRow}>
+      {addRowLabel ? `+ Add ${addRowLabel} Row` : '+ Add Row'}
+    </button>
+  );
+
   return (
     <div className="key-value-editor-container">
       <div className="key-value-header">
         <label className="key-value-label">{title}</label>
-        <button type="button" className="add-row-btn" onClick={handleAddRow}>
-          {addRowLabel ? `+ Add ${addRowLabel} Row` : '+ Add Row'}
-        </button>
+        {addRowButtonPosition === 'header' && addRowButton}
       </div>
       <div className="key-value-table">
         <div className="key-value-header-row">
@@ -105,6 +111,11 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
             </button>
           </div>
         ))}
+        {addRowButtonPosition === 'footer' && (
+          <div className="key-value-footer">
+            {addRowButton}
+          </div>
+        )}
       </div>
     </div>
   );

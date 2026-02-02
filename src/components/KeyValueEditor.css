@@ -102,3 +102,25 @@
   color: #ccc;
   cursor: not-allowed;
 }
+
+.key-value-footer {
+  width: 100%;
+}
+
+.key-value-footer .add-row-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  border-radius: 0;
+}
+
+.key-value-footer .add-row-btn:hover {
+  background-color: #e9ecef;
+}

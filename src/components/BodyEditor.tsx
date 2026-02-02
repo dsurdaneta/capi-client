@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './BodyEditor.css';
-import { BodyType, KeyValuePair } from '../types';
+import { BodyType } from '../types';
+import KeyValueEditor from './KeyValueEditor';
 
 export const BODY_TYPES = {
   NONE: 'none',
@@ -24,18 +25,29 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
     }
     return bodyType === BODY_TYPES.JSON ? '' : (body as string) || '';
   });
-  const [formData, setFormData] = useState<KeyValuePair[]>(() => {
+
+  // Convert body to Record<string, string> for KeyValueEditor
+  const getFormData = (): Record<string, string> => {
     if (bodyType === BODY_TYPES.FORM_DATA && typeof body === 'object' && body !== null) {
-      return Object.entries(body).map(([key, value]) => ({ key, value: String(value) }));
+      const result: Record<string, string> = {};
+      Object.entries(body).forEach(([key, value]) => {
+        result[key] = String(value);
+      });
+      return result;
     }
-    return [{ key: '', value: '' }];
-  });
-  const [urlEncodedData, setUrlEncodedData] = useState<KeyValuePair[]>(() => {
+    return {};
+  };
+
+  const getUrlEncodedData = (): Record<string, string> => {
     if (bodyType === BODY_TYPES.X_WWW_FORM_URLENCODED && typeof body === 'object' && body !== null) {
-      return Object.entries(body).map(([key, value]) => ({ key, value: String(value) }));
+      const result: Record<string, string> = {};
+      Object.entries(body).forEach(([key, value]) => {
+        result[key] = String(value);
+      });
+      return result;
     }
-    return [{ key: '', value: '' }];
-  });
+    return {};
+  };
 
   useEffect(() => {
     if (bodyType === BODY_TYPES.JSON && typeof body === 'object' && body !== null) {
@@ -67,74 +79,12 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
     onChange(value);
   };
 
-  const handleFormDataChange = (index: number, field: 'key' | 'value', value: string): void => {
-    const newData = [...formData];
-    newData[index][field] = value;
-    setFormData(newData);
-    updateFormDataParent(newData);
+  const handleFormDataChange = (data: Record<string, string>): void => {
+    onChange(Object.keys(data).length > 0 ? data : null);
   };
 
-  const handleUrlEncodedChange = (index: number, field: 'key' | 'value', value: string): void => {
-    const newData = [...urlEncodedData];
-    newData[index][field] = value;
-    setUrlEncodedData(newData);
-    updateUrlEncodedParent(newData);
-  };
-
-  const handleAddFormRow = (): void => {
-    const newData = [...formData, { key: '', value: '' }];
-    setFormData(newData);
-    updateFormDataParent(newData);
-  };
-
-  const handleAddUrlEncodedRow = (): void => {
-    const newData = [...urlEncodedData, { key: '', value: '' }];
-    setUrlEncodedData(newData);
-    updateUrlEncodedParent(newData);
-  };
-
-  const handleRemoveFormRow = (index: number): void => {
-    if (formData.length === 1) {
-      const newData: KeyValuePair[] = [{ key: '', value: '' }];
-      setFormData(newData);
-      updateFormDataParent(newData);
-    } else {
-      const newData = formData.filter((_, i) => i !== index);
-      setFormData(newData);
-      updateFormDataParent(newData);
-    }
-  };
-
-  const handleRemoveUrlEncodedRow = (index: number): void => {
-    if (urlEncodedData.length === 1) {
-      const newData: KeyValuePair[] = [{ key: '', value: '' }];
-      setUrlEncodedData(newData);
-      updateUrlEncodedParent(newData);
-    } else {
-      const newData = urlEncodedData.filter((_, i) => i !== index);
-      setUrlEncodedData(newData);
-      updateUrlEncodedParent(newData);
-    }
-  };
-
-  const updateFormDataParent = (data: KeyValuePair[]): void => {
-    const obj: Record<string, string> = {};
-    data.forEach((item) => {
-      if (item.key.trim()) {
-        obj[item.key] = item.value;
-      }
-    });
-    onChange(Object.keys(obj).length > 0 ? obj : null);
-  };
-
-  const updateUrlEncodedParent = (data: KeyValuePair[]): void => {
-    const obj: Record<string, string> = {};
-    data.forEach((item) => {
-      if (item.key.trim()) {
-        obj[item.key] = item.value;
-      }
-    });
-    onChange(Object.keys(obj).length > 0 ? obj : null);
+  const handleUrlEncodedChange = (data: Record<string, string>): void => {
+    onChange(Object.keys(data).length > 0 ? data : null);
   };
 
   return (
@@ -173,81 +123,27 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
       )}
 
       {bodyType === BODY_TYPES.FORM_DATA && (
-        <div className="body-form-data">
-          <div className="body-form-header">
-            <div className="body-form-cell-header">Key</div>
-            <div className="body-form-cell-header">Value</div>
-            <div className="body-form-cell-header-actions"></div>
-          </div>
-          {formData.map((item, index) => (
-            <div key={index} className="body-form-row">
-              <input
-                type="text"
-                className="body-form-input"
-                placeholder="Key"
-                value={item.key}
-                onChange={(e) => handleFormDataChange(index, 'key', e.target.value)}
-              />
-              <input
-                type="text"
-                className="body-form-input"
-                placeholder="Value"
-                value={item.value}
-                onChange={(e) => handleFormDataChange(index, 'value', e.target.value)}
-              />
-              <button
-                type="button"
-                className="body-form-remove-btn"
-                onClick={() => handleRemoveFormRow(index)}
-                disabled={formData.length === 1}
-              >
-                ×
-              </button>
-            </div>
-          ))}
-          <button type="button" className="body-form-add-btn" onClick={handleAddFormRow}>
-            + Add Field
-          </button>
-        </div>
+        <KeyValueEditor
+          title=""
+          data={getFormData()}
+          onChange={handleFormDataChange}
+          keyPlaceholder="Key"
+          valuePlaceholder="Value"
+          addRowLabel="Field"
+          addRowButtonPosition="footer"
+        />
       )}
 
       {bodyType === BODY_TYPES.X_WWW_FORM_URLENCODED && (
-        <div className="body-form-data">
-          <div className="body-form-header">
-            <div className="body-form-cell-header">Key</div>
-            <div className="body-form-cell-header">Value</div>
-            <div className="body-form-cell-header-actions"></div>
-          </div>
-          {urlEncodedData.map((item, index) => (
-            <div key={index} className="body-form-row">
-              <input
-                type="text"
-                className="body-form-input"
-                placeholder="Key"
-                value={item.key}
-                onChange={(e) => handleUrlEncodedChange(index, 'key', e.target.value)}
-              />
-              <input
-                type="text"
-                className="body-form-input"
-                placeholder="Value"
-                value={item.value}
-                onChange={(e) => handleUrlEncodedChange(index, 'value', e.target.value)}
-              />
-              <button
-                type="button"
-                className="body-form-remove-btn"
-                onClick={() => handleRemoveUrlEncodedRow(index)}
-                disabled={urlEncodedData.length === 1}
-              >
-                ×
-              </button>
-            </div>
-          ))}
-          <button type="button" className="body-form-add-btn" onClick={handleAddUrlEncodedRow}>
-            + Add Field
-          </button>
-        </div>
+        <KeyValueEditor
+          title=""
+          data={getUrlEncodedData()}
+          onChange={handleUrlEncodedChange}
+          keyPlaceholder="Key"
+          valuePlaceholder="Value"
+          addRowLabel="Field"
+          addRowButtonPosition="footer"
+        />
       )}
     </div>
   );
