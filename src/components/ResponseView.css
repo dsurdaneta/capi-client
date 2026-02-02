@@ -1,0 +1,114 @@
+.response-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+}
+
+.response-loading,
+.response-placeholder {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  font-size: 14px;
+}
+
+.response-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.response-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-redirect {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-client-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-server-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.response-duration {
+  color: #666;
+  font-size: 13px;
+}
+
+.response-error {
+  padding: 20px;
+  background-color: #f8d7da;
+  border-radius: 6px;
+  border-left: 4px solid #dc3545;
+}
+
+.response-error-title {
+  font-weight: 600;
+  color: #721c24;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.response-error-message {
+  color: #721c24;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+}
+
+.response-section {
+  margin-bottom: 20px;
+}
+
+.response-section:last-child {
+  margin-bottom: 0;
+}
+
+.response-section-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.response-content {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border: 1px solid #e0e0e0;
+}
