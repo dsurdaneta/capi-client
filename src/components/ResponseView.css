@@ -105,6 +105,8 @@
   padding: 15px;
   border-radius: 6px;
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
   font-size: 13px;
   font-family: 'Courier New', monospace;
   line-height: 1.6;

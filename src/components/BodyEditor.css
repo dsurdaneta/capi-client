@@ -36,6 +36,9 @@
   font-family: 'Courier New', monospace;
   resize: vertical;
   transition: border-color 0.2s;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .body-textarea:focus {
