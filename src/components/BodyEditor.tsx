@@ -166,7 +166,7 @@ const BodyEditor: React.FC<BodyEditorProps> = ({ body, bodyType, onChange, onBod
           addRowButtonPosition="footer"
         />
       )}
-    </div>
+    </section>
   );
 };
 

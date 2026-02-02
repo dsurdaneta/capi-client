@@ -161,11 +161,11 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
               {showToken ? '👁️' : '👁️‍🗨️'}
             </button>
           </div>
-        </div>
+        </fieldset>
       )}
 
       {authType === AUTH_TYPES.BASIC && (
-        <>
+        <fieldset>
           <div className="auth-input-group">
             <label className="auth-input-label">Username</label>
             <input
@@ -231,11 +231,11 @@ const AuthConfig: React.FC<AuthConfigProps> = ({ auth, onChange }) => {
               </button>
             </div>
           </div>
-        </>
+        </fieldset>
       )}
 
       {authType === AUTH_TYPES.CUSTOM && (
-        <>
+        <fieldset>
           <div className="auth-input-group">
             <label className="auth-input-label">Header Name</label>
             <input
