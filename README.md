@@ -1,6 +1,8 @@
 # cAPI Client
 
-<img src="./public/capi-footer-logo.png" alt="cAPI Footer Logo" width="400" />
+<div align="center">
+  <img src="./public/capi-footer-logo.png" alt="cAPI Footer Logo" width="400" />
+</div>
 
 A modern React + TypeScript-based API Client User Interface for testing and interacting with REST APIs. cAPI Client is yet another API UI client.
 
@@ -58,21 +60,39 @@ npm run build
 
 ```
 src/
-  ├── components/          # React components (TypeScript)
-  │   ├── UrlInput.tsx      # URL input component
-  │   ├── MethodSelector.tsx # HTTP method selector
-  │   ├── KeyValueEditor.tsx # Reusable key-value editor
-  │   ├── AuthConfig.tsx    # Authentication configuration
-  │   ├── BodyEditor.tsx     # Request body editor
-  │   └── ResponseView.tsx  # Response display component
-  ├── services/             # Services (TypeScript)
-  │   └── apiService.ts      # API request service
-  ├── types/                 # TypeScript type definitions
-  │   └── index.ts           # Shared types and interfaces
-  ├── App.tsx                # Main application component
-  ├── App.css                # Application styles
-  ├── index.tsx               # Application entry point
-  └── index.css               # Global styles
+  ├── components/              # React components (TypeScript)
+  │   ├── AuthConfig.tsx       # Authentication configuration
+  │   ├── AuthConfig.css       # AuthConfig styles
+  │   ├── BodyEditor.tsx       # Request body editor
+  │   ├── BodyEditor.css       # BodyEditor styles
+  │   ├── ExampleRequests.tsx  # Pre-defined example requests
+  │   ├── ExampleRequests.css  # ExampleRequests styles
+  │   ├── Footer.tsx           # Footer component
+  │   ├── Footer.css           # Footer styles
+  │   ├── Header.tsx           # Header component
+  │   ├── Header.css           # Header styles
+  │   ├── KeyValueEditor.tsx   # Reusable key-value editor
+  │   ├── KeyValueEditor.css   # KeyValueEditor styles
+  │   ├── MethodSelector.tsx   # HTTP method selector
+  │   ├── MethodSelector.css   # MethodSelector styles
+  │   ├── ResponseView.tsx     # Response display component
+  │   ├── ResponseView.css     # ResponseView styles
+  │   ├── UrlInput.tsx         # URL input component
+  │   └── UrlInput.css         # UrlInput styles
+  ├── services/                # Services (TypeScript)
+  │   └── apiService.ts        # API request service
+  ├── types/                   # TypeScript type definitions
+  │   └── index.ts             # Shared types and interfaces
+  ├── App.tsx                  # Main application component
+  ├── App.css                  # Application styles
+  ├── index.tsx                # Application entry point
+  ├── index.css                # Global styles
+  └── react-app-env.d.ts       # React app type definitions
+public/
+  ├── capi-footer-logo.png     # Footer logo image
+  ├── capi-header-logo.png     # Header logo image
+  ├── favicon.svg              # Application favicon
+  └── index.html               # HTML template
 ```
 
 ## Usage
