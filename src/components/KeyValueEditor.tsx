@@ -114,6 +114,7 @@ const KeyValueEditor: React.FC<KeyValueEditorProps> = ({
                   className="remove-row-btn"
                   onClick={() => handleRemoveRow(index)}
                   disabled={items.length === 1}
+                  aria-label="Remove row"
                 >
                   ×
                 </button>

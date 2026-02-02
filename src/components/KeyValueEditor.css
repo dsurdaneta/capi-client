@@ -59,12 +59,12 @@
 
 .key-value-cell-header:nth-child(2),
 .key-value-row td:nth-child(2) {
-  width: calc(60% - 40px);
+  width: calc(60% - 50px);
 }
 
 .key-value-cell-header:last-child,
 .key-value-row td:last-child {
-  width: 40px;
+  width: 50px;
 }
 
 .key-value-cell-header-actions {
@@ -86,6 +86,8 @@
 
 .key-value-row td:last-child {
   border-right: none;
+  padding: 4px;
+  text-align: center;
 }
 
 .key-value-input {
@@ -104,23 +106,29 @@
 
 .remove-row-btn {
   background: none;
-  border: none;
+  border: 1px solid #dc3545;
   color: #dc3545;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  padding: 0;
+  padding: 4px 6px;
+  width: 100%;
+  min-width: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  border-radius: 4px;
 }
 
 .remove-row-btn:hover:not(:disabled) {
   color: #c82333;
+  background-color: #f8d7da;
+  border-color: #c82333;
 }
 
 .remove-row-btn:disabled {
   color: #ccc;
+  border-color: #ccc;
   cursor: not-allowed;
 }
 
