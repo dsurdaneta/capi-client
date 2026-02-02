@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import UrlInput from './components/UrlInput';
 import MethodSelector from './components/MethodSelector';
 import KeyValueEditor from './components/KeyValueEditor';
@@ -167,19 +169,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="app-header-content">
-          <img 
-            src="/capi-header-logo.png" 
-            alt="cAPI Logo" 
-            className="app-header-logo"
-          />
-          <div className="app-header-text">
-            <h1>cAPI Client</h1>
-            <p>Test and interact with REST APIs</p>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="app-examples-container">
         <ExampleRequests onSelect={handleExampleSelect} />
@@ -232,13 +222,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <footer className="app-footer">
-        <img 
-          src="/capi-footer-logo.png" 
-          alt="cAPI Footer Logo" 
-          className="app-footer-logo"
-        />
-      </footer>
+      <Footer />
     </div>
   );
 };
