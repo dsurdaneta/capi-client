@@ -1,8 +1,6 @@
 import React from 'react';
 import './MethodSelector.css';
-import { HttpMethod } from '../types';
-
-const HTTP_METHODS: HttpMethod[] = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'];
+import { HttpMethod, HTTP_METHODS } from '../types';
 
 interface MethodSelectorProps {
   method: HttpMethod;

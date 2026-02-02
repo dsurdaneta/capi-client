@@ -6,6 +6,7 @@ import KeyValueEditor from './components/KeyValueEditor';
 import AuthConfig from './components/AuthConfig';
 import BodyEditor, { BODY_TYPES } from './components/BodyEditor';
 import ResponseView from './components/ResponseView';
+import ExampleRequests, { ExampleRequest } from './components/ExampleRequests';
 import apiService from './services/apiService';
 import { HttpMethod, AuthConfig as AuthConfigType, BodyType, ApiResponse } from './types';
 
@@ -66,6 +67,46 @@ const App: React.FC = () => {
     return requestHeaders;
   };
 
+  const handleExampleSelect = (example: ExampleRequest): void => {
+    try {
+      const urlObj = new URL(example.url);
+      // Extract base URL without query parameters
+      const baseUrl = `${urlObj.protocol}//${urlObj.host}${urlObj.pathname}`;
+      setUrl(baseUrl);
+
+      // Extract query parameters
+      const extractedParams: Record<string, string> = {};
+      urlObj.searchParams.forEach((value, key) => {
+        extractedParams[key] = value;
+      });
+      setParams(extractedParams);
+
+      // Set method if provided
+      if (example.method) {
+        setMethod(example.method);
+      }
+
+      // Clear other fields for a fresh start
+      setHeaders({});
+      setAuth(null);
+      setBody(null);
+      setBodyType(BODY_TYPES.NONE);
+      setResponse(null);
+    } catch (error) {
+      // If URL parsing fails, just set the URL as-is
+      setUrl(example.url);
+      if (example.method) {
+        setMethod(example.method);
+      }
+      setParams({});
+      setHeaders({});
+      setAuth(null);
+      setBody(null);
+      setBodyType(BODY_TYPES.NONE);
+      setResponse(null);
+    }
+  };
+
   const handleSendRequest = async (): Promise<void> => {
     if (!url.trim()) {
       alert('Please enter a URL');
@@ -116,6 +157,10 @@ const App: React.FC = () => {
         <h1>cAPI Client</h1>
         <p>Test and interact with REST APIs</p>
       </header>
+
+      <div className="app-examples-container">
+        <ExampleRequests onSelect={handleExampleSelect} />
+      </div>
 
       <div className="app-container">
         <div className="app-left-panel">
