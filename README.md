@@ -1,6 +1,6 @@
 # cAPI Client
 
-![cAPI Footer Logo](./public/capi-footer-logo.png)
+<img src="./public/capi-footer-logo.png" alt="cAPI Footer Logo" width="400" />
 
 A modern React + TypeScript-based API Client User Interface for testing and interacting with REST APIs. cAPI Client is yet another API UI client.
 
