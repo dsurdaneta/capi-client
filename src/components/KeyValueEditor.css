@@ -17,7 +17,7 @@
 
 .add-row-btn {
   padding: 6px 12px;
-  background-color: #4a90e2;
+  background-color: #543885;
   color: white;
   border: none;
   border-radius: 6px;
@@ -27,7 +27,7 @@
 }
 
 .add-row-btn:hover {
-  background-color: #357abd;
+  background-color: #432d6a;
 }
 
 .key-value-table {
@@ -139,10 +139,10 @@
 .key-value-footer .add-row-btn {
   width: 100%;
   padding: 10px;
-  background-color: #f8f9fa;
+  background-color: #543885;
   border: none;
   border-top: 1px solid #e0e0e0;
-  color: #4a90e2;
+  color: white;
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
@@ -151,5 +151,5 @@
 }
 
 .key-value-footer .add-row-btn:hover {
-  background-color: #e9ecef;
+  background-color: #432d6a;
 }

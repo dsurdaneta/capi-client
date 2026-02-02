@@ -181,7 +181,7 @@ const App: React.FC = () => {
             <header className="request-header">
               <h2 className="request-title">Request</h2>
               <button className="clear-button" onClick={handleClearRequest} disabled={loading}>
-                Clear
+                🧹 Clear
               </button>
             </header>
             <fieldset className="method-url-container">
@@ -212,7 +212,7 @@ const App: React.FC = () => {
               onBodyTypeChange={setBodyType}
             />
             <button className="send-button" onClick={handleSendRequest} disabled={loading}>
-              {loading ? 'Sending...' : 'Send Request'}
+              {loading ? 'Sending...' : '📩 Send Request'}
             </button>
           </article>
         </section>

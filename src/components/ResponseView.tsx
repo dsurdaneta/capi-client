@@ -15,7 +15,7 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
         <header className="response-header">
           <h2 className="response-title">Response</h2>
           <button className="clear-button" onClick={onClear} disabled>
-            Clear
+            🧹 Clear
           </button>
         </header>
         <p className="response-loading">Sending request...</p>
@@ -29,7 +29,7 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
         <header className="response-header">
           <h2 className="response-title">Response</h2>
           <button className="clear-button" onClick={onClear} disabled>
-            Clear
+            🧹 Clear
           </button>
         </header>
         <p className="response-placeholder">Response will appear here</p>
@@ -73,7 +73,7 @@ const ResponseView: React.FC<ResponseViewProps> = ({ response, loading, onClear 
           </div>
         </div>
         <button className="clear-button" onClick={onClear}>
-          Clear
+          🧹 Clear
         </button>
       </header>
 
