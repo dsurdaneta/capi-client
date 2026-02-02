@@ -47,12 +47,6 @@ const EXAMPLE_REQUESTS: ExampleRequest[] = [
     description: 'Get random user data',
   },
   {
-    name: 'Is Even API',
-    url: 'https://api.isevenapi.xyz/api/iseven/6/',
-    method: 'GET',
-    description: 'Check if a number is even',
-  },
-  {
     name: 'Star Wars API - People',
     url: 'https://swapi.dev/api/people/1',
     method: 'GET',
