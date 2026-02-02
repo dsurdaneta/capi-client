@@ -24,6 +24,11 @@ A modern React + TypeScript-based API Client User Interface for testing and inte
 
 - Node.js 16.13.2
 
+  ```bash
+   nvm install v16.13.2
+   nvm use 16.13.2
+   ```
+
 ## Installation
 
 1. Install dependencies:
