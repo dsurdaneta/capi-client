@@ -13,6 +13,19 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  position: relative;
+}
+
+.app-header-content .pwa-install-banner {
+  position: absolute;
+  right: 20px;
+}
+
+@media (max-width: 900px) {
+  .app-header-content .pwa-install-banner {
+    position: static;
+    margin-left: auto;
+  }
 }
 
 .app-header-logo {

@@ -1,0 +1,17 @@
+{
+  "short_name": "cAPI Client",
+  "name": "cAPI Client - User Interface",
+  "description": "cAPI Client User Interface built with React and TypeScript",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#667eea",
+  "background_color": "#ffffff"
+}
